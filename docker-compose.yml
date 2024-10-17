@@ -1,0 +1,11 @@
+services:
+
+  db:
+    image: postgres:17-alpine
+    restart: "no"
+    volumes:
+     - ./passwd:/etc/passwd:ro
+     - ./group:/etc/group:ro
+     - ./init-script.sh:/docker-entrypoint-initdb.d/init-script.sh
+    environment:
+      POSTGRES_PASSWORD: example
